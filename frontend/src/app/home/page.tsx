@@ -1,8 +1,17 @@
-import React from 'react'
+import LoadImage from "../components/loadImage/LoadImage";
 //------------------------------------------------------
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+            <LoadImage src="/img-dd.jpg" alt="livro" width={900} height={700}/>
+            <LoadImage src="/img-dd.jpg" alt="livro" width={900} height={700}/>
+            <LoadImage src="/img-dd.jpg" alt="livro" width={900} height={700}/>
+            <LoadImage src="/img-dd.jpg" alt="livro" width={900} height={700}/>
+            <LoadImage src="/img-dd.jpg" alt="livro" width={900} height={700}/>
+            <LoadImage src="/img-dd.jpg" alt="livro" width={900} height={700}/>
+            <LoadImage src="/img-dd.jpg" alt="livro" width={900} height={700}/>
+    </div>
+
   );
 };
 //------------------------------------------------------
