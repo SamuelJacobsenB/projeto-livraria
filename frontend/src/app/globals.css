@@ -5,6 +5,13 @@
 }
 
 html,
-body {
+body,
+.page {
     width: 100vw;
+}
+
+
+
+@media screen and (min-width: 700px){
+    
 }

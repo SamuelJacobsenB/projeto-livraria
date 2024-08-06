@@ -1,11 +1,11 @@
-import './page.module.css';
+import './Header.css';
 //------------------------------------------------------
-const Home = () => {
+const Header = () => {
   return (
-    <div>
-      <h1>Veja os livros lsitados abaixo</h1>
+    <div className="header">
+        
     </div>
   );
 };
 //------------------------------------------------------
-export default Home;
+export default Header;
