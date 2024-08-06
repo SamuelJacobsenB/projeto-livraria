@@ -4,9 +4,11 @@ import { useState } from 'react';
 //------------------------------------------------------
 import Link from 'next/link';
 //------------------------------------------------------
-import { BiMenu } from 'react-icons/bi';
+import { IoMenu } from "react-icons/io5";
+import { IoChevronDown } from "react-icons/io5";
 //------------------------------------------------------
 import './NavBar.css';
+
 //------------------------------------------------------
 const NavBar = () => {
 
@@ -16,14 +18,15 @@ const NavBar = () => {
 
   return (
     <nav className='navbar'>
-        <div className='burguer' >
-          <BiMenu className='icon' onClick={toggleActive}/>
+        <div className='burguer'>
+          <IoMenu className={active ? 'closed' : 'icon opend'} onClick={toggleActive}/>
+          <IoChevronDown className={active ? 'icon opend' : 'closed'}  onClick={toggleActive}/>
         </div>
-        <div className={active ? 'links opend' : 'links closed'}>
-            <div>
-                <Link href={'/home'}>Home</Link>
-                <Link href={'/signin'}>SignIn</Link>
-                <Link href={'/signup'}>SignUp</Link>
+        <div className={active ? 'link-container opend' : 'link-container closed'}>
+            <div className='links'>
+                <Link href={'/home'} className='nav-link'>Home</Link>
+                <Link href={'/signin'} className='nav-link'>SignIn</Link>
+                <Link href={'/signup'} className='nav-link'>SignUp</Link>
             </div>
         </div>
     </nav>
