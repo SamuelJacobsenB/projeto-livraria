@@ -1,8 +1,10 @@
 .navbar {
-    background-attachment: fixed;
-    background-color: rgba(0, 0, 0, 0.614);
-    width: 100%;
+    position: sticky;
+    top: 80px;
+    background-color: #00569D;
+    width: 100vw;
     max-height: none;
+    margin-bottom: 50px;
     border-top: 1px solid rgba(0, 0, 0, 0.364);
     border-bottom: 1px solid rgba(0, 0, 0, 0.364);
 }
@@ -10,7 +12,7 @@
 .burguer {
     display: flex;
     justify-content: center;
-    color: rgba(220, 220, 220, 0.786);
+    color: rgba(255, 255, 255, 0.843);
     cursor: pointer;
 }
 
@@ -25,8 +27,7 @@
 }
 
 .link-container {
-    border-top: 1px solid rgba(0, 0, 0, 0.364);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.364);
+    border-bottom: 2px solid #00569D;
     width: 100vw;
 }
 
@@ -40,7 +41,7 @@
 
 .nav-link {
     font-size: 18px;
-    color: rgba(220, 220, 220, 0.786);
+    color: rgba(255, 255, 255, 0.843);
     padding: 20px;
     text-decoration: none;
     transition: 0.4s;

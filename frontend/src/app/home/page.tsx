@@ -1,9 +1,11 @@
+import Carousel from '../components/carousel/Carousel';
+//------------------------------------------------------
 import './page.module.css';
 //------------------------------------------------------
 const Home = () => {
   return (
     <div>
-      <h1>Veja os livros lsitados abaixo</h1>
+      <Carousel/>
     </div>
   );
 };
