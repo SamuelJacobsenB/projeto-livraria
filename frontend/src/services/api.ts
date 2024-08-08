@@ -1,7 +1,7 @@
-import axios, { AxiosInstance } from "axios";
+import axios from "axios";
 //------------------------------------------------------
-const api: AxiosInstance = axios.create({
-    baseURL: process.env.API_URL,
+const api = axios.create({
+    baseURL: 'http://localhost:2024', //My API domain
 });
 //------------------------------------------------------
 export default api;

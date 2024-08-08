@@ -1,42 +1,48 @@
 "use client";
 //------------------------------------------------------
 import { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
+import { useCookies } from 'react-cookie';
 //------------------------------------------------------
 import Button from '../components/button/Button';
 //------------------------------------------------------
 import api from '@/services/api';
 //------------------------------------------------------
-import './page.css'
+import './page.css';
 //------------------------------------------------------
 const SiginUp = () => {
     const router = useRouter();
+
+    const [ cookie, setCookie ] = useCookies<string>();
 
     const [ name, setName ] = useState<string>('');
     const [ email, setEmail ] = useState<string>('');
     const [ password, setPassword ] = useState<string>('');
     const [ password_check, setPassword_check ] = useState<string>('');
 
-    const handleSubmit = async() => {
+    const handleSubmit = async(evt: any) => {
+        evt.preventDefault();
+
         try {
             const user: object = { name, email, password, password_check };
-            const res = await api.post('/user', user);
+            const res = await api.post('/create/user', user);
 
             if(res.data.token){
-
+                setCookie('token', res.data.token);
+                router.push('/home');
             } else {
                 router.push('/signup', res.data);
                 console.log(res.data);
             };
         } catch(err){
-            
+            console.log('Erro catch', err);
         };
     };
 
     return (
         <div className='signup'>
             <h1>Cadastre-se aqui:</h1>
-            <form method="post">
+            <form method="post" onSubmit={(evt)=>handleSubmit(evt)}>
                 <div className="form_control">
                     <label htmlFor="name">Nome completo: </label>
                     <input type="text" name="name" id="name" placeholder='Seu nome' autoFocus required onChange={(evt)=>setName(evt.target.value)}/>
