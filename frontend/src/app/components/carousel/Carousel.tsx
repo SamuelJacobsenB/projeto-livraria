@@ -1,6 +1,6 @@
 "use client";
-
-import { MutableRefObject, useRef } from 'react';
+//------------------------------------------------------
+import { useRef } from 'react';
 //------------------------------------------------------
 import LoadImage from '../loadImage/LoadImage';
 //------------------------------------------------------
@@ -59,19 +59,19 @@ const Carousel = () => {
         },
         {
             picture: 'https://http2.mlstatic.com/D_NQ_NP_2X_689402-MLA52530814538_112022-F.jpg',
-            name: 'Book name',
+            name: 'Bookwfwf name',
             price: 59.90,
             description: 'knjongpjnvjwenfjowe jnweofnweojnfowejnfwoejnfwo jfe efefe',
         },
         {
             picture: 'https://http2.mlstatic.com/D_NQ_NP_2X_689402-MLA52530814538_112022-F.jpg',
-            name: 'Book name',
+            name: 'Boowfwfk name',
             price: 59.90,
             description: 'knjongpjnvjwenfjowe jnweofnweojnfowejnfwoejnfwo jfe efefe',
         },
         {
             picture: 'https://http2.mlstatic.com/D_NQ_NP_2X_689402-MLA52530814538_112022-F.jpg',
-            name: 'Book name',
+            name: 'Booberge gk name',
             price: 59.90,
             description: 'knjongpjnvjwenfjowe jnweofnweojnfowejnfwoejnfwo jfe efefe',
         },
@@ -187,25 +187,25 @@ const Carousel = () => {
 
     const handleLeftClick = (evt: any): void => {
         evt.preventDefault();
-        carousel.current.scrollLeft -= carousel.current.offsetWidth
+        carousel.current.scrollLeft -= 260
     }; 
 
     const handleRightClick = (evt: any): void => {
         evt.preventDefault();
-        carousel.current.scrollLeft += carousel.current.offsetWidth
+        carousel.current.scrollLeft += 260
     }; 
 
     return (
         <div className="carousel_container">
-            
+            <h2>Confira os principais livros:</h2>
             <div className='carousel' ref={carousel}>
-    
+
                 {
                     books.map((book, i)=>{
                         const { picture, name, price } = book as bookType;
                         return (
 
-                                <div className="item" key={i}>
+                                <div className="item" id={i.toString()} key={i}>
                                     <div className="item_img">
                                         <LoadImage src={picture} alt={name} width={180} height={240} className='book_img'/>
                                     </div>
@@ -219,6 +219,7 @@ const Carousel = () => {
                         );
                     })
                 }
+
             </div>
             <div className="buttons">
                 <button className='btn_scroll' onClick={handleLeftClick}>

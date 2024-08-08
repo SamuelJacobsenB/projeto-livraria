@@ -12,13 +12,13 @@ const LoadImage = (props: ImageProps) => {
     const [ loading, setLoading ] = useState<boolean>();
     const [ display, setDisplay ] = useState<string>();
 
-    useEffect(()=>{
+    useEffect((): void=>{
         setLoading(true);
         setDisplay('none');
     }, [])
 
     return (
-        <div className="image-container">
+        <div className="image_container">
             <Image 
                 src={props.src}
                 alt={props.alt}

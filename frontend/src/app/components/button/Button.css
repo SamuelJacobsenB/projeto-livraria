@@ -1,0 +1,33 @@
+.default_button {
+    font-size: 18px;
+    width: 150px;
+    height: 45px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.edit,
+.submit {
+    background-color: #007ce187;
+    color: #00569D;
+
+}
+
+.edit:hover,
+.submit:hover {
+    background-color: #0072cfde;
+    color: #ffffff;
+}
+
+.danger {
+    background-color: rgba(255, 90, 90, 0.653);
+    color: rgb(255, 0, 0);
+}
+
+.danger:hover {
+    background-color: rgba(255, 0, 0, 0.653);
+    color: rgb(255, 255, 255);
+}

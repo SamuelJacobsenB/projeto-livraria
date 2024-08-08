@@ -1,5 +1,3 @@
-import Image from 'next/image';
-//------------------------------------------------------
 import { BiLoaderCircle } from "react-icons/bi";
 //------------------------------------------------------
 import './Loader.css';

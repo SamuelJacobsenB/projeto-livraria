@@ -1,4 +1,4 @@
-.signin {
+.signup {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,13 +8,13 @@
     padding: 10px;
 }
 
-.signin h1 {
+.signup h1 {
     text-align: center;
     font-size: 50px;
     color: rgba(0, 69, 125, 0.878);
 }
 
-.signin form {
+.signup form {
     display: flex;
     justify-content: left;
     align-items: left;
@@ -23,7 +23,7 @@
     padding: 20px;
 }
 
-.signin form .form_control {
+.signup form .form_control {
     display: flex;
     flex-direction: column;
     font-size: 22px;
@@ -54,6 +54,6 @@
     color: rgba(0, 52, 95, 0.35);
 }
 
-.btn_log {
+.btn_cad {
     margin: 20px;
 }
