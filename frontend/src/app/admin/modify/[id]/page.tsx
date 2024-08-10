@@ -2,22 +2,22 @@
 //------------------------------------------------------
 import { useState, useEffect, useCallback } from "react";
 import { useRouter, useParams } from "next/navigation";
+import { useCookies } from "react-cookie";
 //------------------------------------------------------
 import Link from "next/link";
 //------------------------------------------------------
 import Button from "@/app/components/button/Button";
 //------------------------------------------------------
+import adminVerify from "@/services/adminVerify";
 import api from "@/services/api";
-//------------------------------------------------------
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import bookType from "@/types/bookType";
 //------------------------------------------------------
 import './page.css';
 //------------------------------------------------------
 const Update = () => {
     const router = useRouter();
     const params = useParams();
-    const { id } = params as Params;
+    const { id } = params;
+    const [ cookie ] = useCookies<string>();
 
     const [ pictureF, setPicture ] = useState<string>();
     const [ nameF, setName ] = useState<string>();
@@ -54,7 +54,6 @@ const Update = () => {
         };
     }, [id, router]);
 
-
     const handleSubmit = async(evt: any) => {
         evt.preventDefault();
 
@@ -85,7 +84,14 @@ const Update = () => {
 
     useEffect(()=>{
         searchBook();
-    }, [searchBook]);
+
+        adminVerify(cookie.token, router)
+        .then((res)=>{})
+        .catch((err)=>{
+          console.log('Não autenticado');
+          router.push('/home');
+        });
+    }, [searchBook, cookie, router]);
 
         return (
             <div className="update">

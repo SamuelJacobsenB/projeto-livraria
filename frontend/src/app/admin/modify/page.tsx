@@ -2,6 +2,7 @@
 //------------------------------------------------------
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useCookies } from 'react-cookie';
 //------------------------------------------------------
 import Link from 'next/link';
 //------------------------------------------------------
@@ -11,6 +12,7 @@ import Button from '@/app/components/button/Button';
 import { HiPencilAlt } from "react-icons/hi";
 import { FaRegTrashCan } from "react-icons/fa6";
 //------------------------------------------------------
+import adminVerify from '@/services/adminVerify';
 import api from '@/services/api';
 import getBooks from '@/services/getBooks';
 //------------------------------------------------------
@@ -20,6 +22,7 @@ import './page.css';
 //------------------------------------------------------
 const Modify = () => {
   const router = useRouter();
+  const [ cookie, setCookie, removeCookie ] = useCookies<string>();
 
   const [ books, setBooks ] = useState<object[]>([]);
 
@@ -50,7 +53,14 @@ const Modify = () => {
       .catch((err)=>{
         console.log(err);
       });
-  }, []);
+
+      adminVerify(cookie.token, router)
+      .then((res)=>{})
+      .catch((err)=>{
+        console.log('Não autenticado');
+        router.push('/home');
+      });
+  }, [cookie, router]);
 
   return (
     <div className='modify'>

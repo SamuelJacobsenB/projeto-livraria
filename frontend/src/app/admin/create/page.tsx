@@ -1,18 +1,22 @@
 "use client";
 //------------------------------------------------------
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useCookies } from 'react-cookie';
 //------------------------------------------------------
 import Link from 'next/link';
 //------------------------------------------------------
 import Button from '@/app/components/button/Button';
 //------------------------------------------------------
+import adminVerify from '@/services/adminVerify';
 import api from '@/services/api';
 //------------------------------------------------------
 import './page.css';
 //------------------------------------------------------
 const AdminCreate = () => {
     const router = useRouter();
+    
+    const [ cookie, setCookie, removeCookie ] = useCookies<string>();
 
     const [ picture, setPicture ] = useState<string>('');
     const [ name, setName ] = useState<string>('');
@@ -40,6 +44,15 @@ const AdminCreate = () => {
             console.log(err);  
         };
     };
+  
+    useEffect(()=>{
+      adminVerify(cookie.token, router)
+        .then((res)=>{})
+        .catch((err)=>{
+          console.log('Não autenticado');
+          router.push('/home');
+        });
+    }, [cookie, router]);
 
     return (
         <div className='create'>
