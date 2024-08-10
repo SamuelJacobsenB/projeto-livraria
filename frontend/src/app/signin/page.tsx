@@ -23,11 +23,11 @@ const SiginUp = () => {
 
     try {
         const user: object = { email, password };
-        const res = await api.post('/create/user', user);
+        const res = await api.post('/create/verify', user);
 
         if(res.data.token){
             setCookie('token', res.data.token);
-            router.push('/home');
+            router.push('/home', );
         } else {
             router.push('/signup', res.data);
             console.log(res.data);
@@ -43,11 +43,11 @@ const SiginUp = () => {
         <form method="post" onSubmit={(evt)=>handleSubmit(evt)}>
             <div className="form_control">
                 <label htmlFor="email">Email: </label>
-                <input type="email" name="email" id="email" placeholder='meuemail@email.com' required onChange={(evt)=>setEmail(evt.target.value)}/>
+                <input type="email" name="email" id="email" placeholder='meuemail@email.com' required value={email} onChange={(evt)=>setEmail(evt.target.value)}/>
                 </div>
             <div className="form_control">
                 <label htmlFor="password">Senha: </label>
-                <input type="password" name="password" id="password" placeholder='exemplo_4321' minLength={8} required onChange={(evt)=>setPassword(evt.target.value)}/>
+                <input type="password" name="password" id="password" placeholder='exemplo_4321' minLength={8} required value={password} onChange={(evt)=>setPassword(evt.target.value)}/>
             </div>
             <Button className='submit btn_log'>Entrar</Button>
         </form>

@@ -2,7 +2,7 @@ import api from "./api";
 //------------------------------------------------------
 const getBooks = async() => {
     try {
-        const res = await api.get('/books');
+        const res = await api.get('/get/books');
         
         if(res.data.books){
             return res.data.books;

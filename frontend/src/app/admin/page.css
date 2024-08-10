@@ -1,20 +1,17 @@
-.home {
+.admin {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.home h1 {
+.admin h1 {
     text-align: center;
+    font-size: 40px;
     color: #00569D;
     margin: 20px;
 }
 
-.book_list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 800px;
-    width: 100%;
+.admin .admin_link {
+    margin: 20px;
 }

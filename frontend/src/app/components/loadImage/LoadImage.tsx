@@ -10,22 +10,19 @@ import ImageProps from "@/types/ImageProps";
 //------------------------------------------------------
 const LoadImage = (props: ImageProps) => {
     const [ loading, setLoading ] = useState<boolean>();
-    const [ display, setDisplay ] = useState<string>();
 
     useEffect((): void=>{
         setLoading(true);
-        setDisplay('none');
-    }, [])
+    }, []);
 
     return (
         <div className="image_container">
             <Image 
                 src={props.src}
                 alt={props.alt}
-                width={props.width}
-                height={props.height}
-                onLoad={()=>{setLoading(false); setDisplay('block');}}
-                style={{display: display}}
+                width={loading ? 0 : props.width}
+                height={loading ? 0 : props.height}
+                onLoad={()=>setLoading(false)}
                 quality={75}
             />
             {loading && <Loader/> }

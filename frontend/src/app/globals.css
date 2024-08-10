@@ -8,6 +8,8 @@
 html,
 body,
 .page {
+    scroll-behavior: auto;
+    overflow-x: hidden;
     width: 100vw;
 }
 
@@ -16,6 +18,59 @@ body,
     justify-content: center;
 }
 
-@media screen and (min-width: 700px){
-    
+@media screen and (min-width: 1350px){
+    .navbar {
+        position: fixed;
+        top: 0;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 6%;
+        min-height: 100vh;
+        margin: 0px;
+        border: none;
+        float: left;
+    }
+
+    .burguer {
+        padding: 20px;
+    }
+
+    .link_container {
+        width: 100%;
+        border: none;
+    }
+
+    .links {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 0px;
+    }
+
+    .nav-link {
+        text-align: center;
+        padding: 40px 0px;
+        width: 100%;
+    }
+
+    .header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        border-bottom: 2px solid #00569D;
+    }
+
+    .layout_right {
+        float: right;
+    }
+
+    .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 94%;
+        min-height: calc(100vh - 120px);
+        margin-top: 100px;
+    }
 }

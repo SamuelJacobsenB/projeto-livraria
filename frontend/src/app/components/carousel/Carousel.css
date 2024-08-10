@@ -1,5 +1,5 @@
 .carousel_container {
-    max-width: 80vw;
+    max-width: 800px;
     height: 500px;
     padding: 10px;
     border-radius: 8px;
@@ -42,10 +42,6 @@
     margin: 5px;
 }
 
-/* .item_img .book_img {
-    border-radius: 4px;
-} */
-
 .item .info {
     display: flex;
     justify-content: center;
@@ -58,9 +54,10 @@
     color: #00569D;
 }
 
-.info .price {
+.info .author {
     text-align: center;
-    font-size: 18px;
+    font-size: 14px;
+    margin: 2px;
     color: #00569D;
 }
 

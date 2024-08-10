@@ -23,7 +23,7 @@ const NavBar = () => {
 
         </div>
 
-        <div className={active ? 'link-container opend' : 'link-container closed'}>
+        <div className={active ? 'link_container opend' : 'link_container closed'}>
 
             <div className='links'>
 
