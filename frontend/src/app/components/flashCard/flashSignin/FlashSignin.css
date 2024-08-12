@@ -1,0 +1,59 @@
+.signin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 800px;
+    width: 100%;
+    padding: 10px;
+}
+
+.signin h1 {
+    text-align: center;
+    font-size: 50px;
+    color: rgba(0, 69, 125, 0.878);
+}
+
+.signin form {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+}
+
+.signin form .form_control {
+    display: flex;
+    flex-direction: column;
+    font-size: 22px;
+    color: rgba(0, 69, 125, 0.878);
+    padding: 20px;
+}
+
+.form_control label {
+    cursor: pointer;
+}
+
+.form_control input {
+    font-size: 20px;
+    color: rgba(0, 80, 145, 0.878);
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid rgba(0, 69, 125, 0.878);
+    border-radius: 6px;
+    transition: 0.4s;
+}
+
+.form_control input:hover {
+    border: 2px solid rgb(0, 69, 125);
+}
+
+.form_control input::placeholder {
+    color: rgba(0, 52, 95, 0.35);
+}
+
+.btn_log {
+    margin: 20px;
+}

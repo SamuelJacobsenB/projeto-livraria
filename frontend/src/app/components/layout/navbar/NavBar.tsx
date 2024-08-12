@@ -1,10 +1,11 @@
 "use client";
 //------------------------------------------------------
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 //------------------------------------------------------
 import Link from 'next/link';
 //------------------------------------------------------
 import FlashSignup from '../../flashCard/flashSignup/FlashSignup';
+import FlashSignin from '../../flashCard/flashSignin/FlashSignin';
 
 import { IoMenu } from "react-icons/io5";
 import { IoChevronDown } from "react-icons/io5";
@@ -15,6 +16,7 @@ const NavBar = () => {
   const [ active, setActive ] = useState<boolean>(false);
   const toggleActive = (): void => setActive(!active);
 
+  const SignUp: any = useRef();
   const [ showSignUp, setShowSignUp ] = useState<boolean>(false);
   const toggleShowSignUp = (): void => setShowSignUp(true);
 
@@ -41,7 +43,7 @@ const NavBar = () => {
 
             </div>
             <FlashSignup className={showSignUp ? '' : 'closed'}/>
-            <FlashSignIn className={showSignIn ? '' : 'closed'}/>
+            <FlashSignin className={showSignIn ? '' : 'closed'}/>
         </div>
 
     </nav>
