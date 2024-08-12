@@ -10,7 +10,7 @@ body,
 .page {
     scroll-behavior: auto;
     overflow-x: hidden;
-    width: 100vw;
+    max-width: 100vw;
 }
 
 .content {

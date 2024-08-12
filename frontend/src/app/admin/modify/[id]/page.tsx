@@ -97,7 +97,7 @@ const Update = () => {
             <div className="update">
                 <Link href={'/admin'} className='admin_create_modify_link'>Voltar à página principal</Link>
 
-                <h1>Cadastrar livro:</h1>
+                <h1>Editar livro:</h1>
                 <form method="post" onSubmit={(evt)=>handleSubmit(evt)}>
                     <div className="form_control">
                         <label htmlFor="picture">Imagem: </label>

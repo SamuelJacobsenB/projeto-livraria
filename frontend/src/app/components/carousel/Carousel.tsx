@@ -2,6 +2,8 @@
 //------------------------------------------------------
 import { useState, useEffect, useRef } from 'react';
 //------------------------------------------------------
+import Link from 'next/link';
+//------------------------------------------------------
 import LoadImage from '../loadImage/LoadImage';
 //------------------------------------------------------
 import { IoChevronBackOutline } from "react-icons/io5";
@@ -56,7 +58,9 @@ const Carousel = () => {
                                     <div className="info">
                                         <h3 className='book_name'>{name}</h3>
                                         <h3 className='author'>Autor: {author}</h3>
-                                        <button className='btn_borrow'>Ler livro</button>
+                                        <Link href={`/home/${id}`}>
+                                            <button className='btn_borrow'>Ver mais</button>
+                                        </Link>
                                     </div>
                                 </div>
 
