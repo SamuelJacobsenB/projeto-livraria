@@ -12,9 +12,9 @@
 
 .flash_card {
     background-color: white;
-    max-width: 800px;
+    max-width: 900px;
     width: 90vw;
-    max-height: 600px;
+    max-height: 750px;
     height: 90vh;
     padding: 20px;
     border-radius: 8px;

@@ -4,6 +4,8 @@ import { useState } from 'react';
 //------------------------------------------------------
 import Link from 'next/link';
 //------------------------------------------------------
+import FlashSignup from '../../flashCard/flashSignup/FlashSignup';
+
 import { IoMenu } from "react-icons/io5";
 import { IoChevronDown } from "react-icons/io5";
 //------------------------------------------------------
@@ -12,6 +14,12 @@ import './NavBar.css';
 const NavBar = () => {
   const [ active, setActive ] = useState<boolean>(false);
   const toggleActive = (): void => setActive(!active);
+
+  const [ showSignUp, setShowSignUp ] = useState<boolean>(false);
+  const toggleShowSignUp = (): void => setShowSignUp(true);
+
+  const [ showSignIn, setShowSignIn ] = useState<boolean>(false);
+  const toggleShowSignIn = (): void => setShowSignIn(true);
 
   return (
     <nav className='navbar'>
@@ -28,11 +36,12 @@ const NavBar = () => {
             <div className='links'>
 
                 <Link href={'/home'} className='nav-link'>Home</Link>
-                <Link href={'/signin'} className='nav-link'>SignIn</Link>
-                <Link href={'/signup'} className='nav-link'>SignUp</Link>
+                <p className='nav-link' onClick={toggleShowSignIn}>SignIn</p>
+                <p className='nav-link' onClick={toggleShowSignUp}>SignUp</p>
 
             </div>
-
+            <FlashSignup className={showSignUp ? '' : 'closed'}/>
+            <FlashSignIn className={showSignIn ? '' : 'closed'}/>
         </div>
 
     </nav>

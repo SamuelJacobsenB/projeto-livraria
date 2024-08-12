@@ -15,7 +15,7 @@ const FlashCard = (props: cardProps) => {
     };
 
   return (
-    <div className="flash_area" ref={flashArea}>
+    <div className={`flash_area ${props.className}`} ref={flashArea}>
         <div className="flash_card">
             <IoClose className='close_icon' onClick={handleClose}/>
             { props.children }

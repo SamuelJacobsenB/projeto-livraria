@@ -44,6 +44,7 @@
     color: rgba(255, 255, 255, 0.843);
     padding: 20px;
     text-decoration: none;
+    cursor: pointer;
     transition: 0.4s;
 }
 

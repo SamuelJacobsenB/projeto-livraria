@@ -1,5 +1,4 @@
 "use client";
-import FlashCard from '../components/flashCard/FlashCard';
 //------------------------------------------------------
 import { useState, useEffect } from 'react';
 //------------------------------------------------------
@@ -29,7 +28,6 @@ const Home = () => {
 
   return (
     <div className='home'>
-      <FlashCard/>
       <h1>Seja bem-vindo:</h1>
       <Carousel/>
       <h1>Veja todos os livros listados abaixo:</h1>
