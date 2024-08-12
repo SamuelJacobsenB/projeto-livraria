@@ -1,0 +1,29 @@
+.flash_area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.875);
+    width: 100vw;
+    height: 100vh;
+}
+
+.flash_card {
+    background-color: white;
+    max-width: 800px;
+    width: 90vw;
+    max-height: 600px;
+    height: 90vh;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.178);
+}
+
+.close_icon {
+    width: 34px;
+    height: 34px;
+    float: right;
+    cursor: pointer;
+}
