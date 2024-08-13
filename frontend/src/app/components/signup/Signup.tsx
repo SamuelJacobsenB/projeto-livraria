@@ -4,16 +4,13 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCookies } from 'react-cookie';
 //------------------------------------------------------
-import FlashCard from '../FlashCard';
-import Button from '../../button/Button';
+import Button from '../button/Button';
 //------------------------------------------------------
 import api from '@/services/api';
 //------------------------------------------------------
-import classNameProps from '@/types/classNameProps';
+import './Signup.css';
 //------------------------------------------------------
-import './FlashSignup.css';
-//------------------------------------------------------
-const SiginUp = (props: classNameProps) => {
+const SiginUp = () => {
     const router = useRouter();
 
     const [ cookie, setCookie ] = useCookies<string>();
@@ -32,7 +29,13 @@ const SiginUp = (props: classNameProps) => {
 
             if(res.data.token){
                 setCookie('token', res.data.token);
-                router.push('/home');
+                
+                setName('');
+                setEmail('');
+                setPassword('');
+                setPassword_check('');
+
+                window.location.reload();
             } else {
                 router.push('/signup', res.data);
                 console.log(res.data);
@@ -43,7 +46,6 @@ const SiginUp = (props: classNameProps) => {
     };
 
     return (
-        <FlashCard className={props.className}>
             <div className='signup'>
                 <h1>Cadastre-se aqui:</h1>
                 <form method="post" onSubmit={(evt)=>handleSubmit(evt)}>
@@ -66,7 +68,6 @@ const SiginUp = (props: classNameProps) => {
                     <Button className='submit btn_cad'>Cadastre-se</Button>
                 </form>
             </div>
-        </FlashCard>
     );
 };
 //------------------------------------------------------

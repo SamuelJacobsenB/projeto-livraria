@@ -1,14 +1,14 @@
 "use client";
 //------------------------------------------------------
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCookies } from 'react-cookie';
 //------------------------------------------------------
 import api from '@/services/api';
 //------------------------------------------------------
-import Button from '../components/button/Button';
+import Button from '../button/Button';
 //------------------------------------------------------
-import './page.css';
+import './Signin.css';
 //------------------------------------------------------
 const SiginUp = () => {
   const router = useRouter();
@@ -27,7 +27,11 @@ const SiginUp = () => {
 
         if(res.data.token){
             setCookie('token', res.data.token);
-            router.push('/home', );
+
+            setEmail('');
+            setPassword('');
+
+            window.location.reload();
         } else {
             router.push('/signup', res.data);
             console.log(res.data);
@@ -38,20 +42,20 @@ const SiginUp = () => {
 };
 
   return (
-    <div className='signin'>
-        <h1>Entre aqui:</h1>
-        <form method="post" onSubmit={(evt)=>handleSubmit(evt)}>
-            <div className="form_control">
-                <label htmlFor="email">Email: </label>
-                <input type="email" name="email" id="email" placeholder='meuemail@email.com' required value={email} onChange={(evt)=>setEmail(evt.target.value)}/>
+        <div className='signin'>
+            <h1>Entre aqui:</h1>
+            <form method="post" onSubmit={(evt)=>handleSubmit(evt)}>
+                <div className="form_control">
+                    <label htmlFor="email">Email: </label>
+                    <input type="email" name="email" id="email" placeholder='meuemail@email.com' required value={email} onChange={(evt)=>setEmail(evt.target.value)}/>
+                    </div>
+                <div className="form_control">
+                    <label htmlFor="password">Senha: </label>
+                    <input type="password" name="password" id="password" placeholder='exemplo_4321' minLength={8} required value={password} onChange={(evt)=>setPassword(evt.target.value)}/>
                 </div>
-            <div className="form_control">
-                <label htmlFor="password">Senha: </label>
-                <input type="password" name="password" id="password" placeholder='exemplo_4321' minLength={8} required value={password} onChange={(evt)=>setPassword(evt.target.value)}/>
-            </div>
-            <Button className='submit btn_log'>Entrar</Button>
-        </form>
-    </div>
+                <Button className='submit btn_log'>Entrar</Button>
+            </form>
+        </div>
   );
 };
 //------------------------------------------------------
