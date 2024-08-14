@@ -1,13 +1,8 @@
 import api from "./api";
 //------------------------------------------------------
-const adminVerify = async(token: string, router: any) => {
-    await api.post('/verify/admin', {token: token})
-        .then((res)=>{
-            if(res.data.error_msg) router.push('/home');
-        })
-        .catch((err)=>{
-            console.log('Erro na função');
-        });
+const adminVerify = async(token: string) => {
+    const res = await api.post('/verify/admin', {token: token});
+    return res.data;
 };
 //------------------------------------------------------
 export default adminVerify;

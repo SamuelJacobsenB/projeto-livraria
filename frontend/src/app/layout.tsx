@@ -4,6 +4,7 @@ import "./globals.css";
 //------------------------------------------------------
 import NavBar from "./components/layout/navbar/NavBar";
 import Header from "./components/layout/header/Header";
+import Profile from "./components/profile/Profile";
 //------------------------------------------------------
 const inter = Inter({ subsets: ["latin"] });
 //------------------------------------------------------
@@ -25,6 +26,7 @@ export default function RootLayout({
           <div className="content layout_right">
             {children}
           </div>
+          <Profile/>
       </body>
     </html>
   );

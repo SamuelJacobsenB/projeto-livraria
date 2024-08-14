@@ -14,14 +14,14 @@ const FlashCard = (props: cardProps) => {
         flashArea.current.style.display = 'none';
     };
 
-  return (
-        <div className={`flash_area ${props.className}`} ref={flashArea}>
-            <div className="flash_card">
-                <IoClose className='close_icon' onClick={handleClose}/>
-                { props.children }
+    return (
+            <div className={`flash_area ${props.className}`} ref={flashArea}>
+                <div className="flash_card">
+                    <IoClose className='close_icon' onClick={handleClose}/>
+                    { props.children }
+                </div>
             </div>
-        </div>
-  );
+    );
 };
 //------------------------------------------------------
 export default FlashCard;

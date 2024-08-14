@@ -1,6 +1,6 @@
 "use client";
 //------------------------------------------------------
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCookies } from 'react-cookie';
 //------------------------------------------------------
@@ -14,16 +14,19 @@ import './page.css';
 //------------------------------------------------------
 const Admin = () => {
   const router = useRouter();
-  const [ cookie, setCookie, removeCookie ] = useCookies<string>();
+  const [ cookie ] = useCookies<string>();
+
+  const adminVerifyToken = useCallback(async()=>{
+    const verify = await adminVerify(cookie.token);
+
+    if(verify.error_msg){
+        router.push('/home');
+    };
+}, [cookie, router]);
 
   useEffect(()=>{
-    adminVerify(cookie.token, router)
-      .then((res)=>{})
-      .catch((err)=>{
-        console.log('Não autenticado');
-        router.push('/home');
-      });
-  }, [cookie, router]);
+    adminVerifyToken();
+  }, [adminVerifyToken]);
 
   return (
     <div className="admin">

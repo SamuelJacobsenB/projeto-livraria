@@ -1,0 +1,20 @@
+.profile {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+    color: #00569D;
+    width: 70px;
+    height: 70px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #00569D;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.8s;
+}
+
+.profile:hover {
+    background-color: #00569D;
+    color: white;
+}

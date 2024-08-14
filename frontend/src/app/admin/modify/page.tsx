@@ -1,6 +1,6 @@
 "use client";
 //------------------------------------------------------
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCookies } from 'react-cookie';
 //------------------------------------------------------
@@ -22,8 +22,7 @@ import './page.css';
 //------------------------------------------------------
 const Modify = () => {
   const router = useRouter();
-  const [ cookie, setCookie, removeCookie ] = useCookies<string>();
-
+  const [ cookie ] = useCookies<string>();
   const [ books, setBooks ] = useState<object[]>([]);
 
   const handleDelete = async(evt: any) => {
@@ -45,6 +44,14 @@ const Modify = () => {
     };
   };
 
+  const adminVerifyToken = useCallback(async()=>{
+      const verify = await adminVerify(cookie.token);
+
+      if(verify.error_msg){
+          router.push('/home');
+      };
+  }, [cookie, router]);
+
   useEffect(() => {
     getBooks()
       .then((res)=>{
@@ -54,13 +61,8 @@ const Modify = () => {
         console.log(err);
       });
 
-      adminVerify(cookie.token, router)
-      .then((res)=>{})
-      .catch((err)=>{
-        console.log('Não autenticado');
-        router.push('/home');
-      });
-  }, [cookie, router]);
+      adminVerifyToken();
+  }, [adminVerifyToken]);
 
   return (
     <div className='modify'>

@@ -82,16 +82,18 @@ const Update = () => {
         };
     };
 
+    const adminVerifyToken = useCallback(async()=>{
+        const verify = await adminVerify(cookie.token);
+    
+        if(verify.error_msg){
+            router.push('/home');
+        };
+    }, [cookie, router]);
+
     useEffect(()=>{
         searchBook();
-
-        adminVerify(cookie.token, router)
-        .then((res)=>{})
-        .catch((err)=>{
-          console.log('Não autenticado');
-          router.push('/home');
-        });
-    }, [searchBook, cookie, router]);
+        adminVerifyToken();
+    }, [searchBook, adminVerifyToken]);
 
         return (
             <div className="update">

@@ -20,9 +20,7 @@ const ViewMore = () => {
     const router = useRouter();
     const params = useParams();
     const { id } = params;
-
-    const [ cookie, setCookie, removeCookie ] = useCookies<string>();
-    
+    const [ cookie ] = useCookies<string>();
     const [ book, setBook ] = useState<object>({});
 
     const searchBook = useCallback(async() => {
@@ -39,6 +37,14 @@ const ViewMore = () => {
       };
     }, [id]);
 
+    const userVerifyToken = useCallback(async()=>{
+      const verify = await userVerify(cookie.token);
+  
+      if(verify.error_msg){
+          router.push('/home');
+      };
+  }, [cookie, router]);
+
     useEffect(()=>{
       searchBook()
         .then((book)=>{
@@ -48,13 +54,8 @@ const ViewMore = () => {
           console.log(err);
         });
 
-      userVerify(cookie.token, router)
-        .then((res)=>{})
-        .catch((err)=>{
-          console.log('Não autenticado');
-          router.push('/home');
-        });
-    }, [searchBook, router, cookie]);
+        userVerifyToken();
+    }, [searchBook, userVerifyToken]);
 
     if(book){
       const { picture, name, author, year, pages, description, pdf } = book as bookType;

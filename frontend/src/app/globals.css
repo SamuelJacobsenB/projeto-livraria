@@ -73,4 +73,22 @@ body,
         min-height: calc(100vh - 120px);
         margin-top: 100px;
     }
+
+    .profile {
+        background-color: transparent;
+        color: white;
+        margin: 5px;
+        border: none;
+    }
+
+    .profile:hover {
+        background-color: white;
+        color: #00569D;
+    }
+}
+
+@media screen and (min-width: 1600px){
+    .profile {
+        margin: 20px;
+    }
 }
