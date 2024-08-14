@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 //------------------------------------------------------
+import { GoogleOAuthProvider } from "@react-oauth/google";
+//------------------------------------------------------
 import NavBar from "./components/layout/navbar/NavBar";
 import Header from "./components/layout/header/Header";
 import Profile from "./components/profile/Profile";
@@ -21,12 +23,15 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={inter.className}>  
-          <Header/>
-          <NavBar/>
-          <div className="content layout_right">
-            {children}
-          </div>
-          <Profile/>
+          {/** Your Client ID: EXAMPLE */}
+          <GoogleOAuthProvider clientId="831468581736-ibg90kdie9i4fajhp3pfj96rpbfn3l3c.apps.googleusercontent.com">
+            <Header/>
+            <NavBar/>
+            <div className="content layout_right">
+              {children}
+            </div>
+            <Profile/>
+          </GoogleOAuthProvider>
       </body>
     </html>
   );
