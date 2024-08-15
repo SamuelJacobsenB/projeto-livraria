@@ -24,6 +24,7 @@ const LoadImage = (props: ImageProps) => {
                 height={loading ? 0 : props.height}
                 onLoad={()=>setLoading(false)}
                 quality={75}
+                className={props.className}
             />
             {loading && <Loader/> }
         </div>

@@ -1,25 +1,36 @@
 .signup {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     max-width: 800px;
     width: 100%;
+    height: 100%;
     padding: 10px;
+}
+
+.google_space {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 80px;
+    width: 80%;
+    height: 10%;
 }
 
 .signup h1 {
     text-align: center;
     font-size: 34px;
+    margin-top: 30px;
     color: rgba(0, 69, 125, 0.878);
 }
 
 .signup form {
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: left;
     flex-direction: column;
     width: 100%;
+    height: 100%;
     padding: 20px;
 }
 

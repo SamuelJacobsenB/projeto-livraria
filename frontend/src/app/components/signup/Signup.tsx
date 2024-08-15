@@ -1,10 +1,10 @@
 "use client";
 //------------------------------------------------------
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCookies } from 'react-cookie';
 //------------------------------------------------------
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
 //------------------------------------------------------
 import Button from '../button/Button';
 //------------------------------------------------------
@@ -14,26 +14,35 @@ import './Signup.css';
 //------------------------------------------------------
 const SiginUp = () => {
     const router = useRouter();
-
     const [ cookie, setCookie ] = useCookies<string>();
+    const form: any = useRef();
+    const googleArea: any = useRef();
 
-    const [ name, setName ] = useState<string>('');
-    const [ email, setEmail ] = useState<string>('');
+    const [ googleInformations, setGoogleInformations ] = useState<string>();
     const [ password, setPassword ] = useState<string>('');
     const [ password_check, setPassword_check ] = useState<string>('');
+
+    const handleSuccessGoogle = (res: object) => {
+        interface credentialToken { credential: string };
+        const { credential } = res as credentialToken;
+
+        setGoogleInformations(credential);
+
+        googleArea.current.style.display = 'none';
+        form.current.style.display = 'flex';
+    };
 
     const handleSubmit = async(evt: any) => {
         evt.preventDefault();
 
         try {
-            const user: object = { name, email, password, password_check };
+            const user: object = { googleInformations, password, password_check };
             const res = await api.post('/create/user', user);
 
             if(res.data.token){
                 setCookie('token', res.data.token);
                 
-                setName('');
-                setEmail('');
+                setGoogleInformations('');
                 setPassword('');
                 setPassword_check('');
 
@@ -47,23 +56,24 @@ const SiginUp = () => {
         };
     };
 
+    useEffect(()=>{
+        form.current.style.display = 'none';
+    }, []);
+
     return (
             <div className='signup'>
                 <h1>Cadastre-se aqui:</h1>
+                <div className="google_space" ref={googleArea}>
                     <GoogleLogin
                         text='continue_with'
-                        onSuccess={(res)=>{console.log(res)}}
-                        onError={()=>console.log('Erro')}
+                        onSuccess={(res)=>{handleSuccessGoogle(res)}}
+                        onError={()=>console.log('Google authenticate error')}
+                        width={500}
+                        shape='circle'
+                        context='signup'
                     />
-                <form method="post" onSubmit={(evt)=>handleSubmit(evt)}>
-                    {/* <div className="form_control">
-                        <label htmlFor="name">Nome completo: </label>
-                        <input type="text" name="name" id="name" value={name} placeholder='Seu nome' autoFocus required onChange={(evt)=>setName(evt.target.value)}/>
-                    </div>
-                    <div className="form_control">
-                        <label htmlFor="email">Email: </label>
-                        <input type="email" name="email" id="email" placeholder='meuemail@email.com' required value={email} onChange={(evt)=>setEmail(evt.target.value)}/>
-                    </div> */}
+                </div>
+                <form method="post" onSubmit={(evt)=>handleSubmit(evt)} ref={form}>
                     <div className="form_control">
                         <label htmlFor="password">Senha: </label>
                         <input type="password" name="password" id="password" placeholder='exemplo_4321' minLength={8} required value={password} onChange={(evt)=>setPassword(evt.target.value)}/>
