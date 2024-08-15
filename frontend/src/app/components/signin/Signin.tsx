@@ -4,9 +4,11 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCookies } from 'react-cookie';
 //------------------------------------------------------
-import api from '@/services/api';
+import { GoogleLogin } from '@react-oauth/google';
 //------------------------------------------------------
 import Button from '../button/Button';
+//------------------------------------------------------
+import api from '@/services/api';
 //------------------------------------------------------
 import './Signin.css';
 //------------------------------------------------------
@@ -39,11 +41,36 @@ const SiginUp = () => {
     } catch(err){
         console.log('Erro catch', err);
     };
-};
+  };
+
+  const handleSuccessGoogle = async(res: object) => {
+    interface credentialToken { credential: string };
+    const { credential } = res as credentialToken;
+
+    const verify = await api.post('/create/google/verify', { googleInformations: credential});
+
+    if(verify.data.token){
+        setCookie('token', verify.data.token);
+        window.location.reload();
+    } else {
+        router.push('/signup', verify.data);
+        console.log(verify.data);
+    };
+  };
 
   return (
         <div className='signin'>
             <h1>Entre aqui:</h1>
+            <div className="google_space_signin">
+                    <GoogleLogin
+                        text='continue_with'
+                        onSuccess={(res)=>{handleSuccessGoogle(res)}}
+                        onError={()=>console.log('Google authenticate error')}
+                        width={350}
+                        shape='circle'
+                        context='signup'
+                    />
+                </div>
             <form method="post" onSubmit={(evt)=>handleSubmit(evt)}>
                 <div className="form_control">
                     <label htmlFor="email">Email: </label>

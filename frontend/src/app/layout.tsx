@@ -7,6 +7,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import NavBar from "./components/layout/navbar/NavBar";
 import Header from "./components/layout/header/Header";
 import Profile from "./components/profile/Profile";
+import PageLoad from "./components/pageLoad/PageLoad";
 //------------------------------------------------------
 const inter = Inter({ subsets: ["latin"] });
 //------------------------------------------------------
@@ -31,6 +32,7 @@ export default function RootLayout({
               {children}
             </div>
             <Profile/>
+            <PageLoad/>
           </GoogleOAuthProvider>
       </body>
     </html>
