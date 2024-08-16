@@ -12,7 +12,7 @@ import api from '@/services/api';
 //------------------------------------------------------
 import './Signin.css';
 //------------------------------------------------------
-const SiginUp = () => {
+const Signin = () => {
   const router = useRouter();
   const [ cookie, setCookie ] = useCookies<string>();
 
@@ -85,4 +85,4 @@ const SiginUp = () => {
   );
 };
 //------------------------------------------------------
-export default SiginUp;
+export default Signin;

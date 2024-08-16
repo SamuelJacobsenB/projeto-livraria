@@ -1,6 +1,7 @@
 "use client";
 //------------------------------------------------------
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import { useCookies } from 'react-cookie';
 //------------------------------------------------------
 import FlashCard from '../flashCard/FlashCard';
@@ -17,6 +18,7 @@ import classNameProps from '@/types/classNameProps';
 import './Profile.css';
 //------------------------------------------------------
 const Profile = (props: classNameProps) => {
+    const router = useRouter();
     const [ cookie ] = useCookies<string>();
     const profileImage: any = useRef();
     const profileIcon: any = useRef();
@@ -25,18 +27,10 @@ const Profile = (props: classNameProps) => {
     const closeFlash = useCallback((): void => {
       const flashCard: any = document.querySelector('.flash_profile');
       flashCard.style.display = 'none';
-
-      const flashUserCard: any = document.querySelector('.flash_user');
-      flashUserCard.style.display = 'none';
     }, []);
 
     const activeFlashSignIn = (): void => {
       const flashCard: any = document.querySelector('.flash_profile');
-      flashCard.style.display = 'flex';
-    };
-
-    const activeFlashUser = (): void => {
-      const flashCard: any = document.querySelector('.flash_user');
       flashCard.style.display = 'flex';
     };
 
@@ -64,7 +58,13 @@ const Profile = (props: classNameProps) => {
         if(verify.error_msg){
           activeFlashSignIn();
         } else {
-          activeFlashUser();
+          const res = await api.post('/get/id', { token: cookie.token });
+
+          if(res.data.id){
+            router.push(`/informations/${res.data.id}`)
+          } else{
+            console.log(res.data.error_msg);
+          };
         };
     };
 
@@ -77,9 +77,6 @@ const Profile = (props: classNameProps) => {
         <>
             <FlashCard className='flash_profile'>
               <Signin/>
-            </FlashCard>
-            <FlashCard className='flash_user'>
-              <h1>Ola</h1>
             </FlashCard>
             <div className='profile_area profile' onClick={handleUserVerify}>
               <div ref={profileImage} >

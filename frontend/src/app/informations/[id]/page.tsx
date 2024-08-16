@@ -7,7 +7,6 @@ import { useCookies } from "react-cookie";
 import Link from "next/link";
 //------------------------------------------------------
 import LoadImage from "@/app/components/loadImage/LoadImage";
-
 //------------------------------------------------------
 import userVerify from "@/services/userVerify";
 import api from "@/services/api";
@@ -24,18 +23,6 @@ const Informations = () => {
   const [ cookie ] = useCookies();
 
   const [ readedBooks, setReadedBooks ] = useState<string[]>();
-  
-  const getReadedBooks = useCallback(async()=>{
-    const res = await api.post(`/get/readed/${id}`, { token: cookie.token });
-
-    if(res.data.books){
-      const books: string[] = res.data.books.split(';');
-      setReadedBooks(books);
-    } else { 
-      console.log(res.data.error_msg);
-      router.push('/home');
-    };
-  }, [id, router, cookie]);
 
   const userVerifyToken = useCallback(async()=>{
     const verify = await userVerify(cookie.token);
@@ -44,6 +31,21 @@ const Informations = () => {
         router.push('/home');
     };
   }, [cookie, router]);
+  
+  const getReadedBooks = useCallback(async()=>{
+    const res = await api.post(`/get/readed/${id}`, { token: cookie.token });
+
+    if(res.data.books){
+      const books: string[] = res.data.books.split(';');
+      console.log(books)
+      setReadedBooks(books);
+    } else if(res.data.books == undefined){
+      //Anything will happen
+    } else { 
+      console.log(res.data.error_msg);
+      router.push('/home');
+    };
+  }, [id, router, cookie]);
 
   const searchBook = async(bookId: number) => {
     try {
@@ -72,7 +74,7 @@ const Informations = () => {
         <div className="readed_books">
           {
             readedBooks.map(async(book, i)=>{
-              const bookParts: string[] = book.split(',');
+              const bookParts: string[] = book.split(':');
               const bookId: number = Number(bookParts[0]);
               const bookEvaluation: number = Number(bookParts[1]);
 
