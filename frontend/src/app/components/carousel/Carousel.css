@@ -63,7 +63,7 @@
     color: #00569D;
 }
 
-.info .btn_borrow {
+.btn_borrow {
     background-color: #004883;
     color: rgba(255, 255, 255, 0.84);
     font-size: 20px;
@@ -75,7 +75,7 @@
     transition: 0.4s;
 }
 
-.info .btn_borrow:hover {
+.btn_borrow:hover {
     background-color: #00569D;
     color: #fff;
 }

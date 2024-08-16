@@ -14,7 +14,6 @@ import './Signin.css';
 //------------------------------------------------------
 const SiginUp = () => {
   const router = useRouter();
-
   const [ cookie, setCookie ] = useCookies<string>();
 
   const [ email, setEmail ] = useState<string>('');

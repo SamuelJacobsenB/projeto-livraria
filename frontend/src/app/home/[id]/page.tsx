@@ -43,7 +43,7 @@ const ViewMore = () => {
       if(verify.error_msg){
           router.push('/home');
       };
-  }, [cookie, router]);
+    }, [cookie, router]);
 
     useEffect(()=>{
       searchBook()
