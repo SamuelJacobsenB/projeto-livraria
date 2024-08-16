@@ -41,6 +41,7 @@ const Informations = () => {
       setReadedBooks(books);
     } else if(res.data.books == undefined){
       //Anything will happen
+      console.log(res.data.error_msg)
     } else { 
       console.log(res.data.error_msg);
       router.push('/home');
