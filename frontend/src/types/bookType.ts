@@ -7,4 +7,5 @@ export default interface bookType {
     pages: number;
     description: string;
     pdf: string;
+    evaluation?: number;
 };
