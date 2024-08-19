@@ -12,6 +12,7 @@ import Carousel from '../components/carousel/Carousel';
 import Signin from '../components/signin/Signin';
 import FlashCard from '../components/flashCard/FlashCard';
 import Button from '../components/button/Button';
+import Search from '../components/search/Search';
 //------------------------------------------------------
 import { IoAdd } from "react-icons/io5";
 //------------------------------------------------------
@@ -62,7 +63,9 @@ const Home = () => {
       <FlashCard className='flash_signin'>
         <Signin/>
       </FlashCard>
+      <Search/>
       <div className="book_list">
+
         {
 
 
@@ -93,12 +96,12 @@ const Home = () => {
 
             return (
 
-                    <div className="item" id={i.toString()} key={id}>
+                    <div className={`item ${i}`} id={i.toString()} key={id}>
                         <div>
                           <IoAdd className='add_icon' onClick={activeFlash}/>
                           <FlashCard className={`flash${id}`}>
-                            <div className='evaluation_area'>
-                              <LoadImage src={picture} alt={name} width={350} height={500}/>
+                            <div className='evaluation_area img_home'>
+                              <LoadImage src={picture} alt={name} width={350} height={500} />
                               <ReactStars
                                 count={5}
                                 onChange={setNewRate}

@@ -1,0 +1,42 @@
+.search {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 800px;
+    width: 90%;
+    height: 54px;
+    padding: 6px;
+    margin: 10px;
+    border: 1px solid #00569D;
+    border-radius: 50px;
+}
+
+.search button {
+    background-color: transparent;
+    border: none;
+}
+
+.search_icon,
+.delete_icon {
+    color: #00569D;
+    width: 34px;
+    height: 34px;
+    margin: 10px;
+    float: left;
+    cursor: pointer;
+}
+
+.search input {
+    font-size: 20px;
+    background-color: transparent;
+    color: #00569D;
+    width: 90%;
+    height: 100%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.search input::placeholder {
+    color: #00569D;
+}
